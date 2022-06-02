@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/choose.css') }}">
+{% endblock %}
+{% block title %}Выбрать книгу{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+            <div class="my-3 py-3">
+                <h2 class="display-5">Выбрать книгу</h2>
+                <p class="lead">В нашей библиотеке огромный ассортимент бумажных изданий со всего мира</p>
+            </div>
+            <div class="bg-light shadow-sm mx-auto"
+                 style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
+                <div class="container group-card">
+                    <div class="card small-card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='/vendor/img/prince.jpg') }}" class="card-img-top"
+                             alt="prince">
+                        <div class="card-body">
+                            <h5 class="card-title">Маленький принц</h5>
+                            <p class="card-text card-text-color">Some quick example text to build on the card title and
+                                make up the bulk
+                                of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary">Взять книгу</a>
+                        </div>
+                    </div>
+                    <div class="card small-card" style="width: 18rem;">
+                        <img src="{{ url_for('static', filename='/vendor/img/oldman.jpg') }}" class="card-img-top"
+                             alt="prince">
+                        <div class="card-body">
+                            <h5 class="card-title">Старик и море</h5>
+                            <p class="card-text card-text-color">Some quick example text to build on the card title and
+                                make up the bulk
+                                of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary">Взять книгу</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

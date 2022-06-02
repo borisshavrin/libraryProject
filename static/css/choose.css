@@ -1,0 +1,12 @@
+.card-title {
+    color:black;
+}
+
+.card-body {
+    color: black;
+}
+
+.group-card {
+    display: flex;
+    justify-content: space-around;
+}
