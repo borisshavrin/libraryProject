@@ -12,31 +12,20 @@
                 <p class="lead">В нашей библиотеке огромный ассортимент бумажных изданий со всего мира</p>
             </div>
             <div class="bg-light shadow-sm mx-auto"
-                 style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
+                 style="width: 40%; height: auto; border-radius: 21px 21px 0 0;">
                 <div class="container group-card">
                     <div class="card small-card" style="width: 18rem;">
-                        <img src="{{ url_for('static', filename='/vendor/img/prince.jpg') }}" class="card-img-top"
-                             alt="prince">
-                        <div class="card-body">
-                            <h5 class="card-title">Маленький принц</h5>
-                            <p class="card-text card-text-color">Some quick example text to build on the card title and
-                                make up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Взять книгу</a>
-                        </div>
-                    </div>
-                    <div class="card small-card" style="width: 18rem;">
-                        <img src="{{ url_for('static', filename='/vendor/img/oldman.jpg') }}" class="card-img-top"
-                             alt="prince">
-                        <div class="card-body">
-                            <h5 class="card-title">Старик и море</h5>
-                            <p class="card-text card-text-color">Some quick example text to build on the card title and
-                                make up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Взять книгу</a>
-                        </div>
+                        {% for book in context.books %}
+                            <img src="{{ url_for('static', filename='/vendor/img/prince.jpg') }}" class="card-img-top"
+                                 alt="prince">
+                            <div class="card-body separated-block">
+                                <h5 class="card-title">{{ book.name }}</h5>
+                                <p class="card-text card-text-color">{{ book.desc }}.</p>
+                                <p class="card-text card-text-color">Кол-во в наличии: {{ book.qty }}.</p>
+                                <a href="#" class="btn btn-primary">Взять книгу</a>
+                                <hr>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

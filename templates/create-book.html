@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление книги{% endblock %}
+
+{% block content %}
+    <div class="container mt-5" style="height: auto">
+        <h1>Добавление книги</h1>
+        <form method="post">
+            <input type="text" name="name" id="name" class="form-control" placeholder="Введите название книги">
+            <textarea name="desc" id="desc" class="form-control" placeholder="Введите описание"></textarea>
+            <input type="number" name="qty" id="qty" class="form-control" placeholder="Введите количество книг">
+            <input type="submit" class="btn btn-success" value="Отправить">
+        </form>
+    </div>
+{% endblock %}
