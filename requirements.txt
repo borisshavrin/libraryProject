@@ -1,4 +1,4 @@
 Flask==2.1.2
-Marshmallow
+flask-marshmallow
 Flask-SQLAlchemy
 Alembic
