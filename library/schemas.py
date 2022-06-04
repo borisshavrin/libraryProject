@@ -6,6 +6,6 @@ from library.models import Book
 class BookSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Book
-        fields = ('name', 'desc', 'qty', 'id', 'is_active')
+        fields = ('id', 'name', 'author', 'desc', 'qty', 'is_active')
         include_relationships = True
         load_instance = True

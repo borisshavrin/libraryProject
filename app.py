@@ -22,8 +22,10 @@ def choose_book():
     book_schema = BookSchema(many=True)
     books_is_active = session.query(Book).filter(Book.is_active==True)
     dump_data = book_schema.dump(books_is_active)
-
+    authors = session.query(Book.author).distinct().all()
     context['books'] = dump_data
+    context['authors'] = authors
+
     return render_template('choose.html', context=context)
 
 
@@ -35,13 +37,14 @@ def create_book():
         name = request.form['name']
         desc = request.form['desc']
         qty = request.form['qty']
+        author = request.form['author']
         is_active = False
         if qty and int(qty) > 0:
             is_active = True
         else:
             qty = 0
-
-        book = Book(name=name, desc=desc, qty=qty, is_active=is_active)
+        print(author)
+        book = Book(name=name, author=author, desc=desc, qty=qty, is_active=is_active)
         try:
             session.add(book)
             session.commit()
@@ -80,9 +83,8 @@ def manage_book():
     return render_template('manage-book.html', context=context)
 
 
-@app.route('/manage-book/<int:id>')
 @app.route('/update-desc/<int:id>', methods=['POST', 'GET'])
-def manage_book_id(id):
+def update_desc_id(id):
     context = {}
     book_by_id = session.query(Book).filter_by(id=id).one()
     if request.method == 'GET':
@@ -93,15 +95,26 @@ def manage_book_id(id):
         """Переход к формам"""
         return render_template('update-book.html', context=context)
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
         """Получили форму"""
         new_desc = request.form['desc']
         book_by_id = session.query(Book).filter_by(id=id).one()
         book_by_id.desc = new_desc
 
-    else:
-        book_by_id.qty += 1
-        book_by_id.is_active = True
+    try:
+        session.add(book_by_id)
+        session.commit()
+        return redirect('/')
+    except Exception:
+        return 'При изменении кол-ва книги произошла ошибка'
+
+
+@app.route('/manage-book/<int:id>')
+def manage_book_id(id):
+    context = {}
+    book_by_id = session.query(Book).filter_by(id=id).one()
+    book_by_id.qty += 1
+    book_by_id.is_active = True
 
     try:
         session.add(book_by_id)
@@ -119,6 +132,17 @@ def delete_book(id):
         session.commit()
     except Exception:
         return 'Ошибка при попытке удаления книги'
+
+
+@app.route('/filter-by-author/<author>')
+def filter_by_author(author):
+    context = {}
+    book_schema = BookSchema(many=True)
+    books_by_author = session.query(Book).filter(Book.author==author)
+    dump_data = book_schema.dump(books_by_author)
+
+    context['books'] = dump_data
+    return render_template('choose.html', context=context)
 
 
 if __name__ == '__main__':

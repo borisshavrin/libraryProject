@@ -20,7 +20,9 @@
                                  alt="gucci">
                             <div class="card-body separated-block">
                                 <h5 class="card-title">{{ book.name }}</h5>
-                                <p class="card-text card-text-color">{{ book.desc }}.</p>
+                                <h5 class="card-title">{{ book.author }}</h5>
+                                <p class="card-text card-text-color">{{ book.desc }}</p>
+                                <p class="card-text card-text-color">{{ book.qty }}шт.</p>
                                 <a href="/manage-book/{{ book.id }}" class="btn btn-primary">Вернуть книгу</a>
                                 <a href="/update-desc/{{ book.id }}" methods="GET" class="btn btn-warning">Изменить описание</a>
                                 <a href="/delete-book/{{ book.id }}" class="btn btn-danger">Удалить книгу</a>

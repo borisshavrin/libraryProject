@@ -8,8 +8,16 @@
                 <input type="text" readonly class="form-control-plaintext" id="name" value="{{ context.book.name }}">
             </div>
             <div class="col-auto">
+                <label for="author" class="col-sm-2 col-form-label"><b>Автор книги:</b></label>
+                <input type="text" readonly class="form-control-plaintext" id="author" value="{{ context.book.author }}">
+            </div>
+            <div class="col-auto">
                 <label for="desc" class="col-sm-2 col-form-label"><b>Описание:</b></label>
                 <input type="text" name="desc" id="desc" class="form-control" placeholder="{{ context.book.desc }}">
+            </div>
+            <div class="col-auto">
+                <label for="qty" class="col-sm-2 col-form-label"><b>Количество:</b></label>
+                <input type="number" readonly class="form-control-plaintext" id="qty" name="qty" value="{{ context.book.qty }}">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3" value="Сохранить">Сохранить</button>

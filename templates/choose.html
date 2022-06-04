@@ -11,6 +11,12 @@
                 <h2 class="display-5">Выбрать книгу</h2>
                 <p class="lead">В нашей библиотеке огромный ассортимент бумажных изданий со всего мира</p>
             </div>
+            <h4 class="display-6">Фильтровать по автору</h4>
+            <div class="my-3 py-3 filter-group">
+                {% for author in context.authors %}
+                    <a class="filter" href="/filter-by-author/{{ author.0 }}">{{ author.0 }}</a>
+                {% endfor %}
+            </div>
             <div class="bg-light shadow-sm mx-auto"
                  style="width: 35%; height: auto; border-radius: 21px 21px 0 0;">
                 <div class="container group-card">
@@ -20,9 +26,10 @@
                                  alt="gucci">
                             <div class="card-body separated-block">
                                 <h5 class="card-title">{{ book.name }}</h5>
-                                <p class="card-text card-text-color">{{ book.desc }}.</p>
+                                <h5 class="card-title">{{ book.author }}</h5>
+                                <p class="card-text card-text-color">{{ book.desc }}</p>
                                 <p class="card-text card-text-color">Кол-во в наличии: {{ book.qty }}шт.</p>
-                                    <a href="/take-book/{{ book.id }}" class="btn btn-primary">Взять книгу</a>
+                                <a href="/take-book/{{ book.id }}" class="btn btn-primary">Взять книгу</a>
                                 <hr>
                             </div>
                         {% endfor %}

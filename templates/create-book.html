@@ -4,8 +4,13 @@
     <div class="container mt-5" style="height: auto">
         <h1>Добавление книги</h1>
         <form method="post">
+            <label for="name" class="col-sm-2 col-form-label"><b>Название книги:</b></label>
             <input type="text" name="name" id="name" class="form-control" placeholder="Введите название книги">
+            <label for="author" class="col-sm-2 col-form-label"><b>Автор книги:</b></label>
+            <input type="text" name="author" id="author" class="form-control" placeholder="Введите автора книги">
+            <label for="desc" class="col-sm-2 col-form-label"><b>Описание:</b></label>
             <textarea name="desc" id="desc" class="form-control" placeholder="Введите описание"></textarea>
+            <label for="qty" class="col-sm-2 col-form-label"><b>Количество:</b></label>
             <input type="number" name="qty" id="qty" class="form-control" placeholder="Введите количество книг">
             <input type="submit" class="btn btn-success" value="Отправить">
         </form>
