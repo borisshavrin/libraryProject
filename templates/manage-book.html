@@ -8,8 +8,8 @@
     <div class="container">
         <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
             <div class="my-3 py-3">
-                <h2 class="display-5">Выбрать книгу</h2>
-                <p class="lead">В нашей библиотеке огромный ассортимент бумажных изданий со всего мира</p>
+                <h2 class="display-5">Управлять книгой</h2>
+                <p class="lead">Список всех книг, включая статус is_active=False</p>
             </div>
             <div class="bg-light shadow-sm mx-auto"
                  style="width: 35%; height: auto; border-radius: 21px 21px 0 0;">
@@ -21,8 +21,9 @@
                             <div class="card-body separated-block">
                                 <h5 class="card-title">{{ book.name }}</h5>
                                 <p class="card-text card-text-color">{{ book.desc }}.</p>
-                                <p class="card-text card-text-color">Кол-во в наличии: {{ book.qty }}шт.</p>
-                                    <a href="/take-book/{{ book.id }}" class="btn btn-primary">Взять книгу</a>
+                                <a href="/manage-book/{{ book.id }}" class="btn btn-primary">Вернуть книгу</a>
+                                <a href="/update-desc/{{ book.id }}" methods="GET" class="btn btn-warning">Изменить описание</a>
+                                <a href="/delete-book/{{ book.id }}" class="btn btn-danger">Удалить книгу</a>
                                 <hr>
                             </div>
                         {% endfor %}

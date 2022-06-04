@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <form class="row g-3" method="post">
+            <div class="col-auto">
+                <label for="name" class="col-sm-2 col-form-label"><b>Название книги:</b></label>
+                <input type="text" readonly class="form-control-plaintext" id="name" value="{{ context.book.name }}">
+            </div>
+            <div class="col-auto">
+                <label for="desc" class="col-sm-2 col-form-label"><b>Описание:</b></label>
+                <input type="text" name="desc" id="desc" class="form-control" placeholder="{{ context.book.desc }}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3" value="Сохранить">Сохранить</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

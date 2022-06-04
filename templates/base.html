@@ -7,7 +7,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     {% block css %}{% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{ context.title }}</title>
 </head>
 <body>
 <div class="container">
@@ -28,10 +28,8 @@
                     </button>
                     <ul class="dropdown-menu" style="">
                         <li><a class="dropdown-item" href="/choose">Выбрать книгу</a></li>
-                        <li><a class="dropdown-item" href="#">Вернуть книгу</a></li>
-                        <li><a class="dropdown-item" href="/create-book">Создать книгу</a></li>
-                        <li><a class="dropdown-item" href="#">Изменить описание</a></li>
-                        <li><a class="dropdown-item" href="#">Удалить книгу</a></li>
+                        <li><a class="dropdown-item" href="/manage-book">Управлять книгой</a></li>
+                        <li><a class="dropdown-item" href="/create-book">Добавить книгу</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
