@@ -3,3 +3,4 @@ flask-marshmallow
 Flask-SQLAlchemy
 Alembic
 marshmallow-sqlalchemy
+pytest

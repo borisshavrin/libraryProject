@@ -71,7 +71,6 @@ def take_book(id):
 
 
 @app.route('/manage-book')
-@app.route('/update-desc', methods=['POST', 'GET'])
 def manage_book():
     context = {}
 
@@ -109,21 +108,6 @@ def update_desc_id(id):
         return 'При изменении кол-ва книги произошла ошибка'
 
 
-@app.route('/manage-book/<int:id>')
-def manage_book_id(id):
-    context = {}
-    book_by_id = session.query(Book).filter_by(id=id).one()
-    book_by_id.qty += 1
-    book_by_id.is_active = True
-
-    try:
-        session.add(book_by_id)
-        session.commit()
-        return redirect('/')
-    except Exception:
-        return 'При изменении кол-ва книги произошла ошибка'
-
-
 @app.route('/delete-book/<int:id>')
 def delete_book(id):
     book_by_id = session.query(Book).filter_by(id=id).one()
@@ -132,6 +116,8 @@ def delete_book(id):
         session.commit()
     except Exception:
         return 'Ошибка при попытке удаления книги'
+    else:
+        return redirect('/')
 
 
 @app.route('/filter-by-author/<author>')
